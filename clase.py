@@ -105,6 +105,34 @@ Test.metodoEstatico(33)
 
 obj = Ini(8)
 
+# //////////////////////////////////////////
+#                HERENCIA
+# //////////////////////////////////////////
+
+class abuelo:
+  def mAbuelo(self):
+    print("clase abuelo")
+
+class Padre(abuelo):
+  def __init__(self):
+    self.atributo = 8
+
+  def mPadre(self):
+    print("Clase padre")
+
+class Madre:
+  def mMadre(self):
+    print("clase madre")
+
+class Hija(Padre, Madre):  #  Herencia multiple
+  def mHija(self):
+    print("Clase hija")
+
+h = Hija()
+h.mPadre()
+h.mHija()
+h.mAbuelo()
+h.mMadre()
 """
 El doble guion bajo sirve para crear un atributo privado  seld.__radio
 
@@ -121,5 +149,33 @@ de la clase.
 
 Cuando __new__() recibe parametros, estos mismos deben estar en el 
 metodo __init__()
+
+Funciones especiales de comparacion:
+  __it__()  -> mmenor que
+  __le__()  -> menor o igual
+  __gt__()  -> mayor que
+  __ge__()  -> mayor o igual
+  __eq__()  -> igual que
+  __ne__()  -> distinto que
+
+  def __gt__(self,otro):
+    if self.instancia > otro.instancia:
+      return True
+    else:
+      return False
+
+Funcion hash
+
+objeto.__hash__()
+hash(objeto)
+
+ INTROSPECCION
+
+dir(objeto) -> devuelve todos los metodos que pueden ser invocados
+isinstance(objeto,clase) -> para comprobar si un objeto es instancia de una clase
+hasattr(objeto,'atributo') -> para saber si un objeto tiene un atributo dado
+callable(objeto.metodo) -> devuelve True si puede ser llamado como funcion.
+objeto.__getattribute__('atributo') = objeto.atributo
+objeto.__setattr('atributo','valor') ->  objeto.atributo = valor
 
 """
