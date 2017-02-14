@@ -1,6 +1,7 @@
 from math import pi
 
 #==========================================================
+# BASICO
 
 class Moto:
   nRuedas = '2'  # variable de clase
@@ -14,16 +15,20 @@ class Moto:
   def get_marca(self):     #  Metodo de instancia
     print(self.marca)
 
-  def __del__(self):
-    print('del')
+# --------------------------------------------------------
+a = Moto('Kawasaky','Vulcan','blanco')
+
+print('marca: ',a.marca)
+print('ruedas: ',a.nRuedas,'\n')
 
 #==========================================================
+# DECORADORES
 
 class Circulo:
   def __init__(self,radio):
     self.radio = radio
 
-  @property    # Decorador o modificador
+  @property   # Cambia el metodo a propiedad del objeto
   def area(self):
     return pi * (self.radio**2)
 
@@ -40,7 +45,26 @@ class Circulo:
   def tono(self, color):
     self.color = color
 
+# --------------------------------------------------------
+
+cir = Circulo(2)
+print('Area: ',cir.area )     # no se necesitan parentesis al final
+print('Area: ',cir.areas() )  # si se necesitan parentesis al final
+print('Area: ',cir.arrea )
+
+col = 'verde'
+cir.tono(col)
+print(cir.color,'\n')
+
 #==========================================================
+# ATRIBUTO PRIVADO
+
+class privado:
+  def __init__(self):
+    self.__atributo = 9
+
+#==========================================================
+# USO DE DECORADORES PARA MODIFICAR ATRIBUTO
 
 class Figura:
   @property
@@ -51,59 +75,72 @@ class Figura:
   def radio(self, radio):
     self.__radio = radio
 
+# --------------------------------------------------------
+
+bola = Figura()
+bola.radio = 3
+print('Radio bola: ', bola.radio,'\n')
+
 #==========================================================
+# METODOS ESPECIALES
 
-class privado:
-  def __init__(self):
-    self.__atributo = 9
-
-#==========================================================
-
-class Test:
-  def __init__(self):
-    self.x = 8
-
-  @classmethod
-  def metodoClase(cls,parametro):
-    print(parametro)
-
-  @staticmethod
-  def metodoEstatico(valor):
-    print('Metodo estatico -> ',valor)
-#==========================================================
 class Ini:
-  def __new__(cls,x):  # Creacion de instancia
-    print('new')
+  def __new__(cls,x):    # Creacion de instancia
+    print('Creacion de instancia')
     return super(Ini, cls).__new__(cls)
 
   def __init__(self,x):  # Inicializacion de instancia
     self.x = 9
-    print('init')
+    print('Inicializacion de instancia')
+
+  def __del__(self):
+    print('Destructor','\n')
+
+# --------------------------------------------------------
+
+obj = Ini(8)
+
+#==========================================================
+# TIPOS DE METODOS
+
+class Test:
+  def __init__(self,var):
+    self.x = var   # atributo de instancia
+
+  # atributo propiedad
+  @property
+  def propiedad(self):
+    print('Mi propiedad.')
+
+  # metodo de instancia
+  def metodo(self):
+    print('Metodo de instancia')
+
+  # metodo de clase
+  @classmethod
+  def metodoClase(cls,parametro):
+    print('metodo de clase -> ',parametro)
+
+  # metodo estatico
+  # no referencia a la instancia (self), ni a la clase (cls)
+  # no se puede acceder a ningun atributo de la clase
+  @staticmethod
+  def metodoEstatico(valor):
+    print('Metodo estatico -> ',valor)
+
+# --------------------------------------------------------
+
+objeto = Test('atributo instancia')
+
+print(objeto.x)          # atributo de instancia
+objeto.propiedad         # atributo propiedad
+objeto.metodo()          # metodo de instancia
+Test.metodoClase('17')   # metodo de clase
+Test.metodoEstatico(33)  # metodo estatico
+print('')
 
 #==========================================================
 
-a = Moto('Kawasaky','Vulcan','blanco')
-
-print('marca: ',a.marca)
-print('ruedas: ',a.nRuedas)
-
-cir = Circulo(2)
-print('Area: ',cir.area )     # no se necesitan parentesis al final
-print('Area: ',cir.areas() )  # si se necesitan parentesis al final
-print('Area: ',cir.arrea )
-
-bola = Figura()
-bola.radio = 3
-print('Radio bola: ', bola.radio)
-
-col = 'verde'
-cir.tono(col)
-print(cir.color)
-
-Test.metodoClase('Metodo de clase')
-Test.metodoEstatico(33)
-
-obj = Ini(8)
 
 """
 El doble guion bajo sirve para crear un atributo privado  seld.__radio
@@ -121,5 +158,9 @@ de la clase.
 
 Cuando __new__() recibe parametros, estos mismos deben estar en el 
 metodo __init__()
+
+El destrudtor __del__() siempre se ejecuta autamticamente cuando el 
+objeto ya no es necesario. Al finalizar el programa para liberar 
+memoria, pero puede ser invocado para que realice mas acciones.
 
 """
