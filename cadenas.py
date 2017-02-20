@@ -1,3 +1,6 @@
+from operator import itemgetter
+import re
+
 # ///////////////////////////////////////////////////
 # ********************  FORMATO  ********************
 # ///////////////////////////////////////////////////
@@ -48,6 +51,14 @@ print(cadena.rjust(50, "="), '\n')
 numero_factura = 1575
 print(str(numero_factura).zfill(12), '\n')
 
+# ordenar.
+# ordenapor letra
+lista = [('a',2),('c',2),('b',3),('d',3),('z',1),('a',1),('d',1),('e',4)]
+m = sorted(lista, key=itemgetter(0,1))
+
+# ordenar por numero
+m = sorted(lista, key=itemgetter(1,0))
+
 
 # ///////////////////////////////////////////////////
 # ********************  BUSQUEDA ********************
@@ -61,12 +72,32 @@ cadena = "bienvenido a mi aplicacion".capitalize()
 print('Cuento en cadena %i \n' %(cadena.count("a")))
 
 # Buscar una subcadena dentro de una cadena
-# find("subcadena" [, posicion_inicio, posicion_fin])
+# find("subcadena" [posicion_inicio, posicion_fin])
 # Retorna posición donde inicia subcadena. Si no la encuentra, retorna -1.
 
 cadena = "bienvenido a mi aplicación".capitalize()
 print(cadena.find("mi"))
 print(cadena.find("mi", 0, 10), '\n')
+
+# Buscar y extraer elemento si lo encuentra, si no, retorna
+# None
+
+m = re.search(r'\d\d\d', 'hola789adios').group()
+print(m)
+
+# Buscar cadenas complejas.
+# buscar y agrupar en dos grupos, uno para numeros hasta el guion, 
+# y otro para las letras que siguen.
+
+regex = re.compile(r'(\d+)-([A-Za-z]+)')
+m = regex.search('ams12357-mono')
+print('numeros %s  letras %s\n' % (m.group(1), m.group(2)))
+
+# Busca todas las coincidencias y regresa tupla de los que 
+# cumplen el patron
+
+m = re.findall(r'\d{3}', '321dsfg1dgf22dfge568' )
+print(m)
 
 
 # /////////////////////////////////////////////////////
@@ -184,13 +215,19 @@ cadena = "   www.eugeniabahit.com   "
 print(cadena.strip())
 print(cadena.strip(' '), '\n')
 
-"""
- Eliminar caracteres a la izquierda de una cadena
- lstrip(["caracter"])
 
- Eliminar caracteres a la derecha de una cadena
- rstrip(["caracter"])
-"""
+# Eliminar caracteres a la izquierda de una cadena
+lstrip(["caracter"])
+
+# Eliminar caracteres a la derecha de una cadena
+rstrip(["caracter"])
+
+# sustituir todos los numeros por guiones
+m = re.sub(r'\d', '-', '345abcdser789')
+
+# sustituir solo 4 de los numeros
+m = re.sub(r'\d', '-', '345abcdser789', 4)
+
 
 # /////////////////////////////////////////////////////
 # *****************  UNION Y DIVISION *****************
@@ -239,3 +276,66 @@ Linea 4
 print(texto.splitlines())
 texto = "Linea 1\nLinea 2\nLinea 3"
 print(texto.splitlines())
+
+"""
+  PATRONES BASICOS
+
+ .       cualquier caracter, excepto linea nueva
+ \n      nueva linea
+ \r      retorno del carro
+ \t      tabulador horizontal
+ \w      cualquier numero o letra minuscula
+ \W      numero o letra mayuscula
+ \s      espacio en blanco, tab, nueva line, retorno del carro
+ \S      cualquier caracter que no es espacio en blanco
+ \d      digito
+ \D      cualquier caracter no numerico
+ ^       inicio de cadena
+ $       fin de cadena
+ \       escape para caracteres especiales
+ \b      separacion entre numero o letra
+ +       una o mas veces
+ *       cero o mas veces
+ ?       cero o una vez
+ {n}     el caracter se repite n veces
+ []      rango, cualquier caracter entre los corchetes
+ ^[]     cualquier caracter que no este en los corchetes
+
+	PATRONES PARA COMPROBACIONES COTIDIANAS
+
+	Numeros del 0 al 999999
+
+	^d{1,6}$
+
+	Codigo hexagecimal para HTML
+
+	^#([a-fA-F0-9]){3}(([a-fA-F0-9]){3})?$
+
+	Fecha en formato dd/mm/aaaa
+
+	^\d\d/\d\d/\d\d\d\d$
+
+	UNIX path
+
+	^.*\//
+
+	Direccion MAC
+
+	^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$
+
+	Cuenta de e-mail
+
+	^[0-9a-zA-Z([-.\w]*[0-9a-zA-Z_+])*@([0-9a-zA-Z][-\w]*
+	[0-9a-zA-Z]\.)+[a-zA-Z{2,9}]]$
+
+	HHTP URL
+
+	(http?):\/\/([0-9a-zA-Z][-\w+]*[0.9a-zA-Z]\.)+
+	([a-zA-Z]{2,9})(:\d{1,4})?([-\w/\#~:?+=&%@~]*)
+
+	Direccion IPv4
+
+	^(\d|[01]?\d\d|2[0-4]\d|25[0-5])\.(\d|[01]?\d\d|2[0-4]\d|25[0-5])\.
+	(\d|[01]?\d\d|2[0-4]\d|25[0-5])\.(\d|[01]?\d\d|2[0-4]\d|25[0-5])$
+
+"""
