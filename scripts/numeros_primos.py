@@ -21,13 +21,13 @@ while a<Z+1:
   p=p+1
   s=0
   for i in range(2,p):
-    b=p%i
-    if b==0:
-      s=1
+    b = p%i
+    if b == 0:
+      s = 1
       break
-    if s==0:
-      primos.append(p)
-      a=a+1
+  if s==0:
+     primos.append(p)
+     a=a+1
        
 print('Los %1s primeros primos son: %1s\n' %(Z,primos)) 
 
