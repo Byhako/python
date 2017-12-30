@@ -1,5 +1,5 @@
 import math
-from time import time 
+from time import time
 inicio=time()
 print('%1s\n' %('NUMEROS PRIMOS'))
 
@@ -12,24 +12,24 @@ podemos escribir esto como:
 
 (p-1)! % p=p-1
 """
-#generamos los Z primeros primos 
+#generamos los Z primeros primos
 Z=10
 primos=[]
 a=1
 p=1
 while a<Z+1:
-  p=p+1
-  s=0
-  for i in range(2,p):
-    b=p%i
-    if b==0:
-      s=1
-      break
+    p = p+1
+    s = 0
+    for i in range(2,p):
+        b = p%i
+        if b==0:
+            s = 1
+            break
     if s==0:
-      primos.append(p)
-      a=a+1
-       
-print('Los %1s primeros primos son: %1s\n' %(Z,primos)) 
+        primos.append(p)
+        a=a+1
+
+print('Los %1s primeros primos son: %1s\n' %(Z,primos))
 
 #///////////////////////////////////////////
 # Criba de Eratostenes
@@ -77,14 +77,14 @@ print('Tiempo de ejecucion: ', fin-inicio)
 
 
 # Postulado de Bertrand:
-# 
+#
 # Si n es un número natural mayor que 3, entonces siempre existe
 # un número primo p tal que n < p < 2n- 2.
 # """
-# 
+#
 # #Hallamos cota superio.
 # nmax=int(floor(((primos[Z-1])+2)/2))
-#  
+#
 # for i in range(4,nmax+1):
 #     p=[]
 #     n1=i
