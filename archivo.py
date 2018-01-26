@@ -3,8 +3,8 @@ from os import path
 #=====================================
 #                 LEER
 #=====================================
-
-
+# scp edison@c3.itm.edu.co:/home/edison/Ruben/working/area/tiempo_sucursal.py /home/ruben/Documentos/
+# scp /home/ruben/Documentos/working/area/3customer.py  edison@c3.itm.edu.co:/home/edison/Ruben/working/area
 # ***** VECTORES CON LOS DATOS DE COLUMNAS *****
 
 x = []

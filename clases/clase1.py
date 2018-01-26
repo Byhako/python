@@ -71,7 +71,7 @@ class Figura:
   def radius(self):
     return self.__radio
 
-  @radius.setter
+  @radius.setter  #para modificar atributo radio
   def radio(self, radio):
     self.__radio = radio
 
@@ -143,7 +143,7 @@ print('')
 
 
 """
-El doble guion bajo sirve para crear un atributo privado  seld.__radio
+El doble guion bajo sirve para crear un atributo privado  self.__radio
 
 Con el decorador @property podemos acceder al atributo area, pero no modifi
 carlo, para modificalo se necesita usar setter -> Figura
