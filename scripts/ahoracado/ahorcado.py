@@ -1,57 +1,58 @@
 # Ascii art
 import random 
-
+import subprocess
+import time
 
 IMAGES = ['''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========''']
+    +---+
+    |   |
+        |
+        |
+        |
+        |
+  =========''', '''
+    +---+
+    |   |
+    O   |
+        |
+        |
+        |
+  =========''', '''
+    +---+
+    |   |
+    O   |
+    |   |
+        |
+        |
+  =========''', '''
+    +---+
+    |   |
+    O   |
+   /|   |
+        |
+        |
+  =========''', '''
+    +---+
+    |   |
+    O   |
+   /|\  |
+        |
+        |
+  =========''', '''
+    +---+
+    |   |
+    O   |
+   /|\  |
+   /    |
+        |
+  =========''', '''
+    +---+
+    |   |
+    O   |
+   /|\  |
+   / \  |
+        |
+  =========''']
 
 WORDS = [
   'lavadora',
@@ -67,6 +68,10 @@ def randomWord(WORDS=WORDS):
   return WORDS[id]
 
 def showBoard(hiddenWord, tries):
+  subprocess.call(['clear'])
+  print('= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n')
+  print(' ',' ',' ',cont,'\n')
+  print('= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n')
   print(IMAGES[tries])
   print('')
   print(hiddenWord,'\n')
@@ -78,6 +83,7 @@ def run():
   tries = 0
   
   while(True):
+    
     showBoard(hiddenWord, tries)
     letter = input('Ingresa una letra: ')
 
@@ -107,5 +113,18 @@ def run():
 
 #===========================================================
 #if __name__ =='__main__':
-print('A H O R C A D O')
+
+saludo = ['B','I','E','N','V','E','N','I','D','O']
+cont = []
+
+subprocess.call(['clear'])
+
+for i in saludo:
+  cont.append(i)
+  print('= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n')
+  print(' ',' ',' ',cont)
+  time.sleep(0.3)
+  subprocess.call(['clear'])
+
+
 run()
