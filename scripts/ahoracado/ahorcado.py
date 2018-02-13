@@ -63,18 +63,26 @@ WORDS = [
   'sinonimo'
 ]
 
+def titulo():
+  print('_______________________________________________\n')
+  print(' ',' ',' ', end='')
+  
+  for j in ban:
+    print(j,' ', end=' ')
+  print('\n_______________________________________________\n')
+
 def randomWord(WORDS=WORDS):
   id = random.randint(0, len(WORDS)-1)
   return WORDS[id]
 
 def showBoard(hiddenWord, tries):
   subprocess.call(['clear'])
-  print('= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n')
-  print(' ',' ',' ',cont,'\n')
-  print('= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n')
+  titulo()
   print(IMAGES[tries])
   print('')
-  print(hiddenWord,'\n')
+  for i in hiddenWord:
+    print(i,end=' ')
+  print('\n')
   print('--- * '*5)
 
 def run():
@@ -108,21 +116,28 @@ def run():
     try:
       hiddenWord.index('_ ')
     except ValueError:
+      showBoard(hiddenWord, tries)
+      print('______________________________________________________\n')
       print('\nFelicidades. Tu ganaste. La palabra es {}.\n'.format(word))
+      print('______________________________________________________\n')
       break
 
 #===========================================================
 #if __name__ =='__main__':
 
 saludo = ['B','I','E','N','V','E','N','I','D','O']
-cont = []
-
+ban = []
+s = 0
 subprocess.call(['clear'])
 
 for i in saludo:
-  cont.append(i)
-  print('= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n')
-  print(' ',' ',' ',cont)
+  ban.append(i)
+  print('_______________________________________________\n')
+  print(' ',' ',' ', end='')
+  for j in ban:
+    print(j,' ', end=' ')
+
+  print('\n')
   time.sleep(0.3)
   subprocess.call(['clear'])
 

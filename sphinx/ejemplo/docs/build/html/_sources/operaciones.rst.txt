@@ -1,0 +1,6 @@
+Modulos operaciones.
+*********************
+
+.. automodule:: codigo.operaciones.libreria
+   :members: suma, resta
+--------------
