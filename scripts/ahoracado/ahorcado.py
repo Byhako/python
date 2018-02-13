@@ -57,10 +57,15 @@ IMAGES = ['''
 WORDS = [
   'lavadora',
   'camiseta',
-  'camion',
+  'conservatorio',
   'termodinamica',
-  'amistad',
-  'sinonimo'
+  'procesadora',
+  'sinonimo',
+  'computadora',
+  'fantasmagorico',
+  'analogia',
+  'indefinido',
+  'sapodolfo'
 ]
 
 def titulo():
@@ -105,7 +110,9 @@ def run():
       tries += 1
       if(tries==6):
         showBoard(hiddenWord, tries)
+        print('______________________________________________________\n')
         print('\nPerdiste. La palabra correcta era {}.\n'.format(word))
+        print('______________________________________________________\n')
         break
     else:
       for i in letter_index:
