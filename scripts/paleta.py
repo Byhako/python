@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
+import json
 import os
 
 def Colores(paleta, x, archivo):
@@ -41,7 +42,7 @@ def Colores(paleta, x, archivo):
     dic[key] = value    # agrego elemento
 
   with open(archivo, 'w') as f:
-    f.write( str(dic) )
+    f.write( str(json.dumps(dic)) )
 
   os.system('rm paleta.png')
 
@@ -51,4 +52,4 @@ def Colores(paleta, x, archivo):
 if (__name__ == '__main__'):
   
   x = [i for i in np.linspace(-1,1,10)]
-  Colores('viridis', x, 'datos.dat')
+  Colores('viridis', x, 'datos.json')
