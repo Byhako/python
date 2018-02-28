@@ -5,7 +5,7 @@
 #python 2.7
 
 
-from visual.graph import *
+from visual import *
 gra=gdisplay(x=500, y=0, width=400, height=300,title='X Vs. Y',xtitle='X',ytitle='Y',)
 fase=gcurve(color=color.red)
 
