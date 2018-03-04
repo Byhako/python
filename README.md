@@ -1,8 +1,16 @@
 # python
-scripts python of personal examples.
+Scripts python of personal examples.
 
-Bibliography:
+## Bibliography:
 
-Python 3 al descubierto. Arturo Fernandez Montoro
++ Python 3 al descubierto. Arturo Fernandez Montoro
 
-http://pybonacci.org
++ http://pybonacci.org
+
++ https://platzi.com/clases/python
+
+### Google Cloud
+
+Vamos a configurar un entorno de desarrollo.  Vamos a https://cloud.google.com/appengine/downloads
+
+
