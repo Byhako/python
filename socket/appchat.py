@@ -9,13 +9,17 @@ socketio = SocketIO(app)
 def home(name=None):
   return render_template('index.html')
 
-def chat_handler(data):
+def ini_handler(data):
   print(str(data))
 
+def chat_handler(data):
+  print(str(data))
+  socketio.emit('mensaje', data)
 
 if __name__ == '__main__':
-  socketio.on_event('chat', chat_handler)
-  socketio.run(app)
+  socketio.on_event('chat', ini_handler)
+  socketio.on_event('send', chat_handler)
+  socketio.run(app, host='0.0.0.0')
 
   url_for('static', filename='chat.png')
   url_for('static', filename='chat.ico')
