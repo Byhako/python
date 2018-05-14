@@ -22,4 +22,4 @@ import numpy as np
 
 
 # In this example, the error function erf(1) is evaluated.
-print(romberg(lambda x: np.exp(x**3) , 1, 3))
+print(romberg(lambda x: 4/x , 1, 2))

@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def f(x):
-  return np.exp(x**3) 
+  return 0.2 + 25*x - 200*x**2 + 675*x**3 - 900*x**4 + 400*x**5
 
 def simpson(a,b,n):
   h = (b-a)/n
@@ -30,9 +30,9 @@ def simpson(a,b,n):
   
   return (3*h/8)*( f(x[0]) + 3*s1 + 3*s2 + 2*s3 + f(x[-1]) )
 
-a = 1
-b = 3
-n = 4
+a = 0
+b = 0.8
+n = 10
 
 x1 = np.linspace(a,b,n+1)
 x2 = np.linspace(a,b,50)

@@ -4,7 +4,7 @@ import numpy as np
 
 # y' = F(x,y)
 def F(x,y):
-  return x + y
+  return 2*x - y
 
 def euler(x0, xf, y0, n):
   """
@@ -26,4 +26,4 @@ def euler(x0, xf, y0, n):
   print('\n',x[-1],'    ',y[-1])
   return y
 
-euler(0,0.2,0,4)
+euler(0,2,0,20)
