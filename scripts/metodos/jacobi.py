@@ -7,6 +7,7 @@ Ruben E Acosta.
 2016-02-27
 """
 from numpy import *
+import numpy as np
 
 def jacobi(A,b):
     """
@@ -41,8 +42,8 @@ def jacobi(A,b):
             break
     return(xa)      
     
-A=matrix('20.0,1.0,-1.0;1.0,-10.0,1.0;-1.0,1.0,10.0')
-b=[17.0,13.0,18.0]
+A = np.matrix([[5,-8,3],[-2,6,-9],[3,-5,2]])
+b = np.matrix([[-71],[134],[-58]])
 
 x=jacobi(A,b)
 print(x) 
