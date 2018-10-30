@@ -19,7 +19,7 @@ def Colores(paleta, x, archivo):
 
   # Cargo la imagen con cv2
   imagen = cv2.imread('paleta.png')
-  cv2.imshow('a', imagen)
+  #cv2.imshow('a', imagen)
   yy, xx, zz = imagen.shape
   maximo = 431    # extremo izquierdo donde comienza borde blanco
   minimo = 61     # extremo derecho donde termina borde blanco
@@ -38,7 +38,7 @@ def Colores(paleta, x, archivo):
     key = "{0:.2f}".format(x[i])  # trunco a 2 decimales
     value = list(color[i])   # Cada elemento es [ B G R]
     value.reverse()     # invierto lista
-    value = '#%02x%02x%02x' % tuple(value)
+    value = '#%02x%02x%02x' % tuple(value) # convierto a hexadecimal
     dic[key] = value    # agrego elemento
 
   with open(archivo, 'w') as f:
