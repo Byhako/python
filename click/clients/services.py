@@ -15,9 +15,13 @@ class ClientService:
 
 
     def list_clients(self):
-        with open(self.table_name, mode='r') as f:
-            reader = csv.DictReader(f, fieldnames=ClientModel.schema())
-            return list(reader)
+        try:
+            with open(self.table_name, mode='r') as f:
+                reader = csv.DictReader(f, fieldnames=ClientModel.schema())
+                return list(reader)
+        except:
+            click.echo('There are no clients.')
+            return 0
 
 
     def update_client(self, updated_client):

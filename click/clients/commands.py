@@ -29,16 +29,17 @@ def list_clients(cxt):
     client_service = ClientService(cxt.obj['client_table'])
     client_list = client_service.list_clients()
 
-    click.echo(' ID  |  NAME  |  COMPANY  |  EMAIL  | POSITION')
-    click.echo('*'*100)
+    if client_list:
+        click.echo('\n  NAME  |  COMPANY  |  EMAIL  | POSITION  |  ID')
+        click.echo('*'*100)
 
-    for client in client_list:
-        click.echo('{uid} | {name} | {company} | {email} | {position}'.format(
-            uid=client['uid'],
-            name=client['name'],
-            company=client['company'],
-            email=client['email'],
-            position=client['position'] ))
+        for client in client_list:
+            click.echo('  {name} | {company} | {email} | {position}  |  {uid}'.format(
+                name=client['name'],
+                company=client['company'],
+                email=client['email'],
+                position=client['position'],
+                uid=client['uid'] ))
 
 
 @clients.command()

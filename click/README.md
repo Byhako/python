@@ -1,18 +1,37 @@
+# Aplicación básica usando "click"
+
++ Creamos entorno virtual.
+
+```
 :~$ conda create -n nombredeentorno
 :~$ source activate nombredeentorno
 :~$ source deactivate
 :~$ conda info —envs
-:~$ condo remove —name nombredeentorno —all
+:~$ conda remove —name nombredeentorno —all
+```
 
-en este caso el entorno se llama click
+### Para instalar la aplicación:
 
-### para instalar la aplicación:
 Estos comandos corren el archivo setup.py
 
 ```
 pip install --editable .
-
-pv clients --help
 ```
 
+Corremos la aplicación.
+
+```
+pv clients --help
 pv clients create
+```
+
+## Decoradores principales de click.
+
+@click.group
+  agrupar comandos
+@click.command
+  definimos todos los comandos de nuestra aplicacion
+@click.argument
+  parametros necesarios
+@click.option
+  parametros opcionales
