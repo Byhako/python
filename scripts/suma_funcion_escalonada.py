@@ -25,7 +25,8 @@ for i in range(len(X)):
     for j in range(len(X[i])):
         x.append(X[i][j])
 
-x = list(set(x))
+# Elimino elementos repetidos
+x = set(x)
 
 
 # Realizo la suma
