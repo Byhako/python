@@ -44,7 +44,9 @@ class ArticlePage(NewsPage):
     @property
     def body(self):
         result = self._select(self._queries['article_body'])
-        return result[0].text if len(result) else ''
+        parrafo = result[0].text if len(result)>0 else ''
+
+        return parrafo
 
 
     @property

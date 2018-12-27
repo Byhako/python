@@ -7,7 +7,9 @@ import csv
 import re  # expresiones regulares
 
 from requests.exceptions import HTTPError
+from requests.exceptions import ContentDecodingError
 from urllib3.exceptions import MaxRetryError
+from urllib3.exceptions import DecodeError
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -22,15 +24,13 @@ def _new_scraper(news_site_uid):
     homepage = news.HomePage(news_site_uid, host)
     articles = []
 
-
-
     for link in homepage.article_links:
         article = _fetch_article(news_site_uid, host, link)
 
         if article:
             logger.info('Article fetched!')
             articles.append(article)
-            break
+            # break
 
     _save_articles(news_site_uid, articles)
 
@@ -43,11 +43,14 @@ def _fetch_article (news_site_uid, host, link):
     article = None
     try:
         article = news.ArticlePage(news_site_uid, _build_link(host, link))
-    except (HTTPError, MaxRetryError) as err:
+    except (HTTPError, DecodeError, MaxRetryError, ContentDecodingError) as err:
         logger.warning('Error while fetching the article', exc_info=False)
 
-    if article and article.body:
+
+    if not article or not article.body:
+        print('')
         logger.warning('Invalid article. There is not body.')
+        print('')
         return None
 
     return article
