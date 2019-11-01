@@ -1,0 +1,5 @@
+DEBUG:root:Mi debug
+INFO:root:Informacion
+WARNING:root:Ten cuidado!
+ERROR:root:Eres un tonto.
+CRITICAL:root:Error critico
