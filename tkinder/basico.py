@@ -81,4 +81,4 @@ Label(
   background='yellow'
 ).place(x=150, y=20, width=200, height=50)
 
-window.mainloop()
+# window.mainloop()
