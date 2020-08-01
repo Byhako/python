@@ -6,7 +6,8 @@ def fibonacci_recursivo(n):
 
     return fibonacci_recursivo(n-1) + fibonacci_recursivo(n-2)
 
-# Funcion mas eficiente usando memorizacion
+# Funcion mas eficiente usando memorizacion.
+# Optimizamos cambiando tiempo por espacio de memoria
 def fibonacci_dinamico(n, memo = {}):
     if n == 0 or n == 1:
         return 1
