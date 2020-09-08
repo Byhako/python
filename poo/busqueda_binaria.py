@@ -2,8 +2,10 @@ import random
 
 # vamos dividiendo la lista en dos, y miramos en cual mitad esta el objetivo
 def busqueda(lista, comienzo, final, objetivo):
+    print(comienzo, final)
+    print(f'entre {lista[comienzo]} y {lista[final - 1]}')
     # La lista debe ser ordenada
-    if comienzo > final:
+    if comienzo > final or comienzo == final or objetivo > lista[final- 1] or objetivo < lista[comienzo]:
         return False
 
     medio = (comienzo + final) // 2
