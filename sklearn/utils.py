@@ -1,4 +1,5 @@
 import pandas as pd
+import joblib
 
 class Utils:
     def load_from_csv(self, path):
@@ -9,5 +10,6 @@ class Utils:
         y = dataset[y]
         return x, y
 
-    def model_export(self, clf, score):
-        pass
+    def model_export(self, modelo, score):
+        print(f'Best Score: {score}')
+        joblib.dump(modelo, './models/best_model.pkl')
