@@ -81,3 +81,38 @@ $x('//small[@class="author"and ends-with(., "t")]/text()').map(i => i.data)
 
 $x('//small[@class="author"and matches(., "A.*n")]/text()').map(i => i.data)
 ```
+
+### XPath Axes
+Todos los ancestros
+
+```
+# iguales
+$x('/html/body/div/self::div')
+$x('/html/body/div/.')
+
+# Hijos
+$x('/html/body/div/child::div')
+
+# Todos los descendientes
+$x('/html/body/div/descendant::div')
+
+# Descendientes y el nodo mismo
+$x('/html/body/div/descendant-or-self::div')
+
+# Ancestro
+$x('/html/body/div/ancestor::div')
+```
+
+
+# Books
+
+```
+# Titulo de libros
+$x('//article[@class="product_pod"]/h3/a/@title').map(i => i.value)
+
+# Precios
+$x('//article[@class="product_pod"]/div[@class="product_price"]/p[@class="price_color"]/text()').map(i => i.data)
+
+# Categorias de libros
+$x('//div[@class="side_categories"]/ul[@class="nav nav-list"]/li/ul/li/a/text()').map(i => i.data.replace(/[_\W]+/g, ""))
+```
